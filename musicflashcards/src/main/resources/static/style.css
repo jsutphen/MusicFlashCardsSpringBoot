@@ -5,3 +5,6 @@
     width: fit-content;
 }
 
+form {
+    touch-action: manipulation;
+}
