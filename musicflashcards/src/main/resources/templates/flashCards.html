@@ -1,0 +1,25 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" th:href="@{/style.css}">
+    </head>
+    <body>
+        <h1 style="text-align: center;">Noten lernen</h1>
+        <img class="center" th:src="@{/img/{image}(image=${flashCard.imageFileName})}">
+        
+        <p style="text-align: center">Gib den Notennamen ein, beispielsweise c' für das eingestrichene c.</p>
+        <br>
+        <p th:if="${feedback != null}" th:text="${feedback}" style="min-height: 20px; text-align: center;"></p>
+        <br>
+        <div style="width: fit-content;" class="center">
+            <form style="display: inline;" th:object="${response}" action="#" th:action="@{/flashcard}" method="post">
+                <input type="text" th:field="*{answer}" name="answer">
+                <input type="submit">
+            </form>
+            <button onclick="location.href='/flashcard'">Nächste Karte</button>
+        </div>
+
+    </body>
+</html>
