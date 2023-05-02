@@ -27,7 +27,7 @@ public class FlashCardController {
 
     @ModelAttribute("submitButtonColor")
     public String getSubmitButtonColor(){
-        return neutral;
+        return "neutral";
     }
 
     @Autowired
