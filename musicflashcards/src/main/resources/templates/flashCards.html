@@ -15,12 +15,17 @@
         <br>
         <p th:if="${feedback != null}" th:text="${feedback}" style="min-height: 20px; text-align: center;"></p>
         <br>
-        <div>
+        <div class="input-group">
+            
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+        <div class="input-group">
             <form th:object="${response}" action="#" th:action="@{/flashcard}" method="post">
-                <input type="text" th:field="*{answer}" name="answer">
-                <input type="submit">
+                <input type="text" th:field="*{answer}" name="answer" class="form-control">
+                <button type="submit" class="btn btn-outline-secondary">
             </form>
-            <button onclick="location.href='/flashcard'">Nächste Karte</button>
+            <button class="btn" onclick="location.href='/flashcard'">Nächste Karte</button>
         </div>
 
     </body>
