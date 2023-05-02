@@ -12,14 +12,12 @@
         <img class="mx-auto d-block" th:src="@{/img/{image}(image=${flashCard.imageFileName})}">
         
         <p style="text-align: center">Gib den Notennamen ein, beispielsweise c' für das eingestrichene c.</p>
-        <br>
-        <p th:if="${feedback != null}" th:text="${feedback}" style="min-height: 20px; text-align: center;"></p>
-        <br>
+        
         <div class="row justify-content-center">
             <div class="col-md-4 col-sm-8">
                 <form class="input-group" th:object="${response}" action="#" th:action="@{/flashcard}" method="post">
                     <input type="text" th:field="*{answer}" name="answer" class="form-control">
-                    <button type="submit" class="btn btn-outline-secondary">Überprüfen</button>
+                    <button  type="submit" class="btn btn-outline-secondary" th:text="${feedback}" th:disabled="${submitButtonDisabled}">Überprüfen</button>
                 </form>
                 <button class="btn btn-outline-secondary col" onclick="location.href='/flashcard'">Nächste Karte</button>
             </div>

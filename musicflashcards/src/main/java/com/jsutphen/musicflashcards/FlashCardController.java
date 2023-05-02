@@ -20,6 +20,11 @@ public class FlashCardController {
         return " ";
     }
 
+    @ModelAttribute("submitButtonDisabled")
+    public boolean getSubmitButtonStatus() {
+        return false;
+    }
+
     @Autowired
     private FlashCardService flashCardService;
 
@@ -27,7 +32,7 @@ public class FlashCardController {
     public String showFlashCard(Model model) {
         flashCardService.setCurrentFlashCard(flashCardService.getRandomFlashCard());
         model.addAttribute("flashCard", flashCardService.getCurrentFlashCard());
-        model.addAttribute("feedback", " ");
+        model.addAttribute("feedback", "Überprüfen");
         return "flashCards";
     }
 
@@ -41,6 +46,7 @@ public class FlashCardController {
         }
         model.addAttribute("flashCard", flashCardService.getCurrentFlashCard());
         model.addAttribute("feedback", feedback);
+        model.addAttribute("submitButtonDisabled", true);
         return "flashCards";
 
     }
