@@ -25,6 +25,11 @@ public class FlashCardController {
         return false;
     }
 
+    @ModelAttribute("submitButtonColor")
+    public String getSubmitButtonColor(){
+        return neutral;
+    }
+
     @Autowired
     private FlashCardService flashCardService;
 
@@ -39,14 +44,18 @@ public class FlashCardController {
     @PostMapping("/flashcard")
     public String checkAnswer(Response response, Model model) {
         String feedback;
+        String color;
         if(response.isCorrect()) {
             feedback = "Richtig!";
+            color = "green";
         } else {
             feedback = "Falsch!";
+            color = "red";
         }
         model.addAttribute("flashCard", flashCardService.getCurrentFlashCard());
         model.addAttribute("feedback", feedback);
         model.addAttribute("submitButtonDisabled", true);
+        model.addAttribute("submitButtonColor", color);
         return "flashCards";
 
     }
