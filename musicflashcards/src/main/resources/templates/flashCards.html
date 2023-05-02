@@ -14,14 +14,19 @@
         <p style="text-align: center">Gib den Notennamen ein, beispielsweise c' für das eingestrichene c.</p>
         
         <div class="row justify-content-center">
-            <div class="col-md-4 col-sm-8">
+            <div class="col-md-4 col-sm-6">
                 <form class="input-group" th:object="${response}" action="#" th:action="@{/flashcard}" method="post">
                     <input type="text" th:field="*{answer}" name="answer" class="form-control">
-                    <button  type="submit" class="btn" th:classappend="${submitButtonColor} == 'red' ? 'btn-outline-danger' : (${submitButtonColor} == 'green' ? 'btn-outline-success' : 'btn-outline-secondary')"
+                    <button  type="submit" class="btn" th:classappend="${submitButtonColor} == 'red' ? 'btn-danger' : (${submitButtonColor} == 'green' ? 'btn-success' : 'btn-primary')"
                     th:text="${feedback}" th:disabled="${submitButtonDisabled}">Überprüfen</button>
                 </form>
-                <button class="btn btn-outline-secondary col" onclick="location.href='/flashcard'">Nächste Karte</button>
             </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <button class="col-md-4 col-sm-4 btn btn-secondary" onclick="location.href='/flashcard'">Nächste Karte</button>
+            
+        </div>
         </div>
 
     </body>
