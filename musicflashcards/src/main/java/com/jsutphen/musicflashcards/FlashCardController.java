@@ -33,15 +33,15 @@ public class FlashCardController {
     @Autowired
     private FlashCardService flashCardService;
 
-    @GetMapping("/flashcard")
+    @GetMapping("/notenlernen")
     public String showFlashCard(Model model) {
         flashCardService.setCurrentFlashCard(flashCardService.getRandomFlashCard());
         model.addAttribute("flashCard", flashCardService.getCurrentFlashCard());
         model.addAttribute("feedback", "Überprüfen");
-        return "flashCards";
+        return "notenlernen";
     }
 
-    @PostMapping("/flashcard")
+    @PostMapping("/notenlernen")
     public String checkAnswer(Response response, Model model) {
         String feedback;
         String color;
@@ -56,7 +56,7 @@ public class FlashCardController {
         model.addAttribute("feedback", feedback);
         model.addAttribute("submitButtonDisabled", true);
         model.addAttribute("submitButtonColor", color);
-        return "flashCards";
+        return "notenlernen";
 
     }
 }
